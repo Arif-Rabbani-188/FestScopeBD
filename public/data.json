@@ -1,0 +1,63 @@
+[
+    {
+      "id": "event-001",
+      "thumbnail": "https://i.ibb.co.com/QF5TQqdn/bicc-jyrfrn-searvd.webp",
+      "name": "Dhaka Tech Summit 2025",
+      "category": "Tech",
+      "date": "June 15, 2025",
+      "location": "BICC, Dhaka",
+      "entryFee": "৳500",
+      "description": "Dhaka Tech Summit 2025 is the premier technology conference in Bangladesh, bringing together industry leaders, innovators, and tech enthusiasts from around the globe. This event will feature keynote speeches from renowned tech pioneers, panel discussions on emerging trends, and hands-on workshops to enhance your skills. Attendees will have the opportunity to network with professionals, explore cutting-edge technologies, and gain insights into the future of the tech industry. Whether you're a developer, entrepreneur, or simply passionate about technology, this summit is the perfect platform to learn, connect, and grow. Don't miss out on this exciting opportunity to be part of the tech revolution in Dhaka!"
+    },
+    {
+      "id": "event-002",
+      "thumbnail": "https://i.ibb.co.com/jPw5LcMB/Art-Gallary.jpg",
+      "name": "Colors of Bengal Art Fair",
+      "category": "Art",
+      "date": "May 25, 2025",
+      "location": "National Art Gallery, Dhaka",
+      "entryFee": "Free",
+      "description": "Colors of Bengal Art Fair is a celebration of the rich artistic heritage of Bengal, showcasing works from both established and emerging artists. This vibrant event will feature a diverse range of art forms, including paintings, sculptures, and digital art. Visitors can immerse themselves in the creativity and cultural expressions of Bengal while engaging with artists through live demonstrations and interactive sessions. The fair aims to promote art appreciation and provide a platform for artists to connect with art enthusiasts and collectors. Whether you're an art lover or simply curious, this event promises an inspiring and enriching experience."
+    },
+    {
+      "id": "event-003",
+      "thumbnail": "https://i.ibb.co.com/d0WDH0dT/ctg-Convension-Hall.jpg",
+      "name": "Chittagong Rock Fest",
+      "category": "Music",
+      "date": "July 10, 2025",
+      "location": "GEC Convention Hall, Chittagong",
+      "entryFee": "৳800",
+      "description": "Chittagong Rock Fest is the ultimate destination for rock music lovers, featuring electrifying performances by some of the best rock bands in the country. This high-energy event will bring together fans and musicians for an unforgettable night of music, passion, and camaraderie. With a lineup of talented artists and a state-of-the-art sound system, the festival promises to deliver an immersive musical experience. Whether you're a die-hard rock fan or just looking for a night of great entertainment, Chittagong Rock Fest is the place to be. Get ready to rock the night away!"
+    },
+    {
+      "id": "event-004",
+      "thumbnail": "https://i.ibb.co.com/YTTJXCcm/BoiMela.jpg",
+      "name": "Bangla Book Carnival",
+      "category": "Literature",
+      "date": "August 3, 2025",
+      "location": "Ekushey Book Fair Grounds, Dhaka",
+      "entryFee": "Free",
+      "description": "Bangla Book Carnival is a literary extravaganza that celebrates the love for books and the written word. This event will feature book launches, author meet-and-greets, and panel discussions on various literary topics. Visitors can explore a wide range of books from different genres and languages, including rare and collectible editions. The carnival aims to foster a culture of reading and provide a platform for authors, publishers, and readers to connect. Whether you're a bibliophile or just looking for a fun and educational outing, Bangla Book Carnival is the perfect event for you."
+    },
+    {
+      "id": "event-005",
+      "thumbnail": "https://i.ibb.co.com/fzr2NMmZ/Incubator.webp",
+      "name": "Startup Bangladesh Expo",
+      "category": "Business",
+      "date": "September 1, 2025",
+      "location": "Startup Incubator, Dhaka",
+      "entryFee": "৳300",
+      "description": "Startup Bangladesh Expo is a dynamic event that brings together entrepreneurs, investors, and industry experts to showcase the latest innovations and business ideas. This expo will feature product launches, pitch sessions, and networking opportunities, providing a platform for startups to gain visibility and connect with potential partners. Attendees can explore a wide range of innovative solutions and learn from the experiences of successful entrepreneurs. Whether you're an aspiring entrepreneur or an investor looking for the next big idea, Startup Bangladesh Expo is the place to be. Join us to celebrate the spirit of innovation and entrepreneurship!"
+    },
+    {
+      "id": "event-006",
+      "thumbnail": "https://i.ibb.co.com/0pXmH1ZD/Ramna-park-Dhaka-Bangladesh.jpg",
+      "name": "Noboborsho Cultural Fest",
+      "category": "Culture",
+      "date": "April 14, 2025",
+      "location": "Ramna Park, Dhaka",
+      "entryFee": "Free",
+      "description": "Noboborsho Cultural Fest is a vibrant celebration of Bengali New Year, showcasing the rich cultural heritage of Bangladesh. This event will feature traditional music and dance performances, art exhibitions, and food stalls offering authentic Bengali cuisine. Visitors can participate in cultural workshops, enjoy folk music, and experience the festive spirit of Noboborsho. The festival aims to promote cultural awareness and bring people together to celebrate the traditions and values of Bengali culture. Whether you're a local or a visitor, Noboborsho Cultural Fest is a must-attend event to experience the essence of Bengali New Year."
+    }
+]
+    

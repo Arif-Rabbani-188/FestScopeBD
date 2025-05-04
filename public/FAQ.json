@@ -1,0 +1,22 @@
+[
+  {
+    "question": "How can I find events near my location?",
+    "answer": "You can use our location filter or enable location services on your device to see events happening near you."
+  },
+  {
+    "question": "Do I need to register to attend an event?",
+    "answer": "Some events require prior registration or ticket purchase. Check the event details for specific requirements."
+  },
+  {
+    "question": "Are the events listed free to attend?",
+    "answer": "Many events are free, but some may have entry fees. The entry fee is mentioned in each event’s details."
+  },
+  {
+    "question": "Can I submit my own event to be listed?",
+    "answer": "Yes! Click on the 'Submit Event' button and fill out the form to have your event reviewed and listed."
+  },
+  {
+    "question": "How often is the event list updated?",
+    "answer": "We update our listings daily to ensure you get the most recent and relevant event information."
+  }
+]

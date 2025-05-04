@@ -6,7 +6,7 @@ import FAQ from '../Components/FAQ/FAQ';
 
 const Home = () => {
 
-    const location = useLoaderData();
+    const location = useLoaderData() || [];
 
 
     return (
@@ -20,7 +20,7 @@ const Home = () => {
                         <p className='text-center md:text-lg text-gray-500'>Discover exciting events happening near you and make unforgettable memories.</p>
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10'>
                             {
-                                location.map(event => <Place
+                                Array.isArray(location) && location.map(event => <Place
                                     key={event.id}
                                     place={event}
                                 ></Place>)

@@ -1,9 +1,17 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import "./Nav.css";
+import { Authconext } from "../Provider/AuthProvider";
 
 
 const Navbar = () => {
+
+  const {user, setUser}= use(Authconext);
+
+  const handleLogout = () => {
+    setUser(null);
+  }
+
   return (
     <div className="navbar w-full md:w-11/12 mx-auto">
       <div className="navbar-start">
@@ -51,13 +59,13 @@ const Navbar = () => {
       </div>
       <div className="navbar-end flex items-center gap-5">
         <div className="hidden md:block avatar avatar-placeholder">
-          <div className="bg-neutral text-neutral-content w-10 rounded-full">
-            <span className="font-bold text-xl">U</span>
+          <div className="bg-neutral text-neutral-content w-12 rounded-full">
+            <img src={user?.photoURL} alt="" />
           </div>
         </div>
-        <Link to="/login" className="btn">
-          Login
-        </Link>
+        <h1 to="/login" className="btn">
+          {user ? <button onClick={handleLogout}>Logout</button> : <Link to="/login">Login</Link>}
+        </h1>     
       </div>
     </div>
   );

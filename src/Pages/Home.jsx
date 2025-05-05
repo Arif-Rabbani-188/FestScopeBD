@@ -18,7 +18,7 @@ const Home = () => {
             {/* Places Section */}
                         <h1 className='text-2xl md:text-3xl font-bold text-center mt-10 mb-3'>Upcoming Events</h1>
                         <p className='text-center md:text-lg text-gray-500'>Discover exciting events happening near you and make unforgettable memories.</p>
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 mx-2 md:mx-0'>
                             {
                                 Array.isArray(location) && location.map(event => <Place
                                     key={event.id}

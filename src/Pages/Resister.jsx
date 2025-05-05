@@ -12,7 +12,7 @@ const Resister = () => {
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.error(errorCode, errorMessage);
+            // console.error(errorCode, errorMessage);
         }
         );
     }
@@ -24,7 +24,7 @@ const Resister = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photoURL, email, password);
+        // console.log(name, photoURL, email, password);
         resisterUser(email, password);
     }
   return (

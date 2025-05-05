@@ -7,7 +7,7 @@ const Details = () => {
   const [event, setEvent] = useState([]);
   const { id } = useParams();
 
-  const { user, loading } = use(Authconext);
+  const { user, setLoading } = use(Authconext);
 
   useEffect(() => {
     fetch("/data.json")

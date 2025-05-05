@@ -1,12 +1,19 @@
-import React, { use } from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import "./Nav.css";
 import { Authconext } from "../Provider/AuthProvider";
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import auth from "../Firebase/Firebase.init";
 
 const Navbar = () => {
-  const { user, setUser } = use(Authconext);
+  const { user, setUser } = useContext(Authconext);
+
+  React.useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, [setUser]);
 
   const handleLogout = () => {
     signOut(auth)

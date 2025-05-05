@@ -1,24 +1,30 @@
 import React, { use, useEffect, useState } from "react";
 import { Authconext } from "../../Provider/AuthProvider";
 import { Link, useLoaderData, useParams } from "react-router";
+import { ToastContainer, toast } from "react-toastify";
 
 const Details = () => {
   const [event, setEvent] = useState([]);
   const { id } = useParams();
-  // const data = useLoaderData();
 
-  useEffect(()=>{
-    fetch('/data.json')
-    .then(res => res.json())
-    .then(data => {
-      const selectedEvent = data.find((item) => item.id === id);
-      if (selectedEvent) {
-        setEvent(selectedEvent);
-      }
-    })
-    .catch(error => console.error('Error fetching data:', error));
-  },[])
+  const { user, loading } = use(Authconext);
 
+  useEffect(() => {
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const selectedEvent = data.find((item) => item.id === id);
+        if (selectedEvent) {
+          setEvent(selectedEvent);
+        }
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [user]);
+
+  const notify = (e) => {
+    e.preventDefault();
+    toast(`You have reserved a seat for ${event?.name}`);
+  }
 
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -44,10 +50,31 @@ const Details = () => {
           <p className="text-justify">
             <span className="font-bold">Description:</span> {event?.description}
           </p>
-          <button className="btn btn-primary md:w-40">Reserve a Seat</button>
-          <Link className="btn btn-primary md:w-40" to="/home">Back To Home</Link>
+          <form onSubmit={notify} className="fieldset">
+            <label className="label">Name</label>
+            <input
+              type="text"
+              name="name"
+              className="input"
+              placeholder="Name"
+              required
+            />
+            <label className="label">Email</label>
+            <input
+              type="email"
+              name="email"
+              className="input"
+              placeholder="Email"
+              required
+            />
+            <button type="submit" className="btn btn-primary md:w-40 mt-5">
+              Reserve a Seat
+            </button>
+          </form>
+          
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

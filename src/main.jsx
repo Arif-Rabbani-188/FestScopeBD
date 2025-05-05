@@ -9,6 +9,8 @@ import MyProfile from "./Pages/MyProfile.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
 import Login from "./Pages/Login.jsx";
 import Details from "./Components/Details/Details.jsx";
+import Resister from "./Pages/Resister.jsx";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute.jsx";
 
 
 const router = createBrowserRouter([
@@ -21,12 +23,13 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home></Home>,
-        loader: () => fetch("data.json"),
       },
       {
         path: "/home/:id",
-        element: <Details></Details>,
-        loader: () => fetch("data.json"),
+        element: <PrivateRoute>
+          <Details></Details>
+        </PrivateRoute>,
+    
       },
       {
         path: "/myProfile",
@@ -38,24 +41,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/resister",
-        element: <App></App>,
+        element: <Resister></Resister>,
       },
     ],
-  },
-  {
-    path: "/myProfile",
-    element: <App></App>,
-  },
-  {
-    path: "/login",
-    element: <App></App>,
-  },
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <RouterProvider router={router}></RouterProvider>
     </AuthProvider>
   </StrictMode>
 );

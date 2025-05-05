@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import Carousel from '../Components/Carousel/Carousel';
 import { useLoaderData } from 'react-router';
 import Place from '../Components/place/Place';
 import FAQ from '../Components/FAQ/FAQ';
+import { Authconext } from '../Provider/AuthProvider';
 
 const Home = () => {
     const [location, setLocation] = useState([]);

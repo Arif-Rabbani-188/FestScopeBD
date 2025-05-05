@@ -1,11 +1,24 @@
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
-import React, { use, useEffect } from "react";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import React, { use, useEffect, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import auth from "../Firebase/Firebase.init";
-import { Authconext } from "../Provider/AuthProvider";
+import AuthProvider, { Authconext } from "../Provider/AuthProvider";
+import { Link } from "react-router";
 
 const Login = () => {
-
+  const {setLoading} = use(Authconext);
+    const handleSignIn = (email, password) => {
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+          const user = userCredential.user;
+          // console.log(user);
+      }).catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // console.error(errorCode, errorMessage);
+      }
+      );
+    }
     const {user, setUser} = use(Authconext);
 
     const googleProvider = new GoogleAuthProvider();
@@ -24,6 +37,8 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+
+        handleSignIn(email, password);
         // console.log(email, password);
     }
 
@@ -31,6 +46,7 @@ const Login = () => {
       const unsubscribed = onAuthStateChanged(auth, (currentUser) => {
         if (currentUser) {
           setUser(currentUser);
+          setLoading(false);
         } else {
           setUser(null);
         }
@@ -41,7 +57,7 @@ const Login = () => {
       };
     },[])
   return (
-    <div className="hero bg-base-200 min-h-screen ">
+    <div className="hero ">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
             <h1 className="text-center text-2xl font-bold">Login</h1>
@@ -56,6 +72,7 @@ const Login = () => {
               <button className="btn btn-neutral mt-4" type="submit">Login</button>
             </form>
             <button onClick={handleGoogleSignIn} className="btn mt-3 bg-amber-100"> <FaGoogle />Login with Google</button>
+            <h1 className="text-center mt-5">Don't Have an Account? Please <Link to='/resister' className="underline text-blue-500">Resister</Link></h1>
           </div>
         </div>
       </div>

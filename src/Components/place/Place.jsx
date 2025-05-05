@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router";
 
 const Place = ({ place }) => {
-  console.log(place);
   return (
     <div className="card shadow-lg p-[2px]">
                     <img className="h-3/4 rounded-t-2xl m-[5px]" src={place.thumbnail} alt="" />
@@ -14,7 +13,7 @@ const Place = ({ place }) => {
                         <p>Location: {place.location}</p>
                         <p>Date: <span className="font-bold">{place.date}</span></p>
                         <p>Category: {place.category}</p>
-                        <Link to='/home' className="underline">View Details</Link>
+                        <Link to={`/home/${place.id}`} className="underline">View Details</Link>
                     </div>
                 </div>
   );

@@ -1,5 +1,5 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import React, { use } from "react";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import React, { use, useEffect } from "react";
 import { FaGoogle } from "react-icons/fa";
 import auth from "../Firebase/Firebase.init";
 import { Authconext } from "../Provider/AuthProvider";
@@ -13,11 +13,10 @@ const Login = () => {
         signInWithPopup(auth, googleProvider)
         .then(result => {
             const user = result.user;
-            console.log(user);
             setUser(user);
         })
         .catch(error => {
-            console.error("Error signing in with Google: ", error);
+            // console.error("Error signing in with Google: ", error);
         });
     }
     const handleSubmit = (e) => {
@@ -25,8 +24,22 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
     }
+
+    useEffect(()=>{
+      const unsubscribed = onAuthStateChanged(auth, (currentUser) => {
+        if (currentUser) {
+          setUser(currentUser);
+        } else {
+          setUser(null);
+        }
+      }
+      );
+      return () => {
+        unsubscribed();
+      };
+    },[])
   return (
     <div className="hero bg-base-200 min-h-screen ">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">

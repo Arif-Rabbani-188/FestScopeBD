@@ -8,6 +8,7 @@ import Home from "./Pages/Home.jsx";
 import MyProfile from "./Pages/MyProfile.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
 import Login from "./Pages/Login.jsx";
+import Details from "./Components/Details/Details.jsx";
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home></Home>,
+        loader: () => fetch("data.json"),
+      },
+      {
+        path: "/home/:id",
+        element: <Details></Details>,
         loader: () => fetch("data.json"),
       },
       {

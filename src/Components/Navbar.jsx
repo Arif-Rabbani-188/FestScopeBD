@@ -2,15 +2,21 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import "./Nav.css";
 import { Authconext } from "../Provider/AuthProvider";
-
+import { signOut } from "firebase/auth";
+import auth from "../Firebase/Firebase.init";
 
 const Navbar = () => {
-
-  const {user, setUser}= use(Authconext);
+  const { user, setUser } = use(Authconext);
 
   const handleLogout = () => {
-    setUser(null);
-  }
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+      })
+      .catch((error) => {
+        console.error("Error signing out: ", error);
+      });
+  };
 
   return (
     <div className="navbar w-full md:w-11/12 mx-auto">
@@ -58,14 +64,20 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end flex items-center gap-5">
-        <div className="hidden md:block avatar avatar-placeholder">
-          <div className="bg-neutral text-neutral-content w-12 rounded-full">
-            <img src={user?.photoURL} alt="" />
+        {user && (
+          <div className="avatar avatar-placeholder">
+            <div className="bg-neutral text-neutral-content w-12 rounded-full">
+              <img src={user?.photoURL} alt="" />
+            </div>
           </div>
-        </div>
-        <h1 to="/login" className="btn">
-          {user ? <button onClick={handleLogout}>Logout</button> : <Link to="/login">Login</Link>}
-        </h1>     
+        )}
+        <h1 to="/login" className="btn bg-[#007bff] text-white">
+          {user ? (
+            <button onClick={handleLogout}>Logout</button>
+          ) : (
+            <Link to="/myProfile">Login</Link>
+          )}
+        </h1>
       </div>
     </div>
   );

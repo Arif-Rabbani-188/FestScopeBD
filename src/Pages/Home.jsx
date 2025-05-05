@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Carousel from '../Components/Carousel/Carousel';
 import { useLoaderData } from 'react-router';
 import Place from '../Components/place/Place';
 import FAQ from '../Components/FAQ/FAQ';
 
 const Home = () => {
+    const [location, setLocation] = useState([]);
 
-    const location = useLoaderData() || [];
+    useEffect(() => {
+        fetch('data.json')
+            .then(res => res.json())
+            .then(data => {
+                setLocation(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    },[])
 
 
     return (

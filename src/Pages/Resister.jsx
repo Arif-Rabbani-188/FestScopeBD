@@ -1,32 +1,64 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React from "react";
 import auth from "../Firebase/Firebase.init";
+import { Link, Navigate, useNavigate } from "react-router";
+import { updateProfile } from "firebase/auth";
+import { FaGoogle } from "react-icons/fa";
 
 const Resister = () => {
+  const navigate = useNavigate();
+  const resisterUser = (email, password, name, photoURL) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        updateProfile(user, {
+          displayName: name,
+          photoURL: photoURL,
+        })
+          .then(() => {
+            navigate("/myProfile");
+            console.log("Profile updated successfully");
+          })
+          .catch((error) => {
+            console.error("Error updating profile:", error);
+          });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // console.error(errorCode, errorMessage);
+      });
+  };
 
-    const resisterUser = (email, password) => {
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-                const user = userCredential.user;
+  const handleResister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const isValidLength = password.length >= 6;
 
-        }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // console.error(errorCode, errorMessage);
-        }
-        );
+    if (!hasUppercase) {
+      alert("Password must have at least one uppercase letter.");
+      return;
     }
 
-    const handleResister = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const photoURL = form.photoURL.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        // console.log(name, photoURL, email, password);
-        resisterUser(email, password);
+    if (!hasLowercase) {
+      alert("Password must have at least one lowercase letter.");
+      return;
     }
+
+    if (!isValidLength) {
+      alert("Password must be at least 6 characters long.");
+      return;
+    }
+
+    // console.log(name, photoURL, email, password);
+    resisterUser(email, password, name, photoURL);
+  };
   return (
     <div className="hero py-24">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -61,11 +93,18 @@ const Resister = () => {
               className="input"
               placeholder="Password"
             />
-            <div>
-            </div>
+            <div></div>
             <button className="btn btn-neutral mt-4" type="submit">
               Resister
             </button>
+
+            <button className="btn mt-3 bg-amber-100"> <FaGoogle />Login with Google</button>
+            <h1 className="text-center mt-5">
+              Already have an account?{" "}
+              <Link to="/login" className="underline text-blue-500">
+                Log In
+              </Link>
+            </h1>
           </form>
         </div>
       </div>

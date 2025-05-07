@@ -27,6 +27,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             setUser(user);
+            
         })
         .catch(error => {
             // console.error("Error signing in with Google: ", error);
@@ -41,21 +42,7 @@ const Login = () => {
         handleSignIn(email, password);
         // console.log(email, password);
     }
-
-    useEffect(()=>{
-      const unsubscribed = onAuthStateChanged(auth, (currentUser) => {
-        if (currentUser) {
-          setUser(currentUser);
-          setLoading(false);
-        } else {
-          setUser(null);
-        }
-      }
-      );
-      return () => {
-        unsubscribed();
-      };
-    },[])
+    
   return (
     <div className="hero ">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">

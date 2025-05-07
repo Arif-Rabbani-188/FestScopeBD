@@ -6,7 +6,9 @@ const PrivateRoute = ({children}) => {
 
     const {user, loading} = use(Authconext);
     if(loading){
-        return children;
+        return <div className="flex justify-center items-center h-screen">
+            <progress className="progress w-56"></progress>
+        </div>
     }
     if(user && user?.email){
         return children;

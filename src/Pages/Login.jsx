@@ -2,12 +2,13 @@ import { GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, sig
 import React, { use, useEffect, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import auth from "../Firebase/Firebase.init";
-import AuthProvider, { Authconext } from "../Provider/AuthProvider";
+import { Authconext } from "../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const {user, setUser} = use(Authconext);
     const handleSignIn = (email, password) => {
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -22,7 +23,7 @@ const Login = () => {
       }
       );
     }
-    const {user, setUser} = use(Authconext);
+    
 
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleSignIn = () => {

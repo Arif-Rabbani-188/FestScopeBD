@@ -7,7 +7,7 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
 
     const {user, loading} = use(Authconext);
-    if(loading){
+    if(loading && !user){
         return <div className="flex justify-center items-center h-screen">
             <progress className="progress w-56"></progress>
         </div>

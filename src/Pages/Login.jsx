@@ -18,6 +18,7 @@ const Login = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           // console.error(errorCode, errorMessage);
+          alert(errorMessage);
       }
       );
     }

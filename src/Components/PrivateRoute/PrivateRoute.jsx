@@ -1,8 +1,10 @@
 import React, { use } from 'react';
 import { Authconext } from '../../Provider/AuthProvider';
-import { Navigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 
 const PrivateRoute = ({children}) => {
+
+    const location = useLocation();
 
     const {user, loading} = use(Authconext);
     if(loading){
@@ -13,7 +15,7 @@ const PrivateRoute = ({children}) => {
     if(user && user?.email){
         return children;
     }
-    return  <Navigate to='/login'></Navigate>
+    return  <Navigate state={location.pathname} to='/login'></Navigate>
     
 };
 

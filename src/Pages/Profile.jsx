@@ -36,7 +36,7 @@ const Profile = () => {
         <figure className="px-10 pt-10">
           <img
             src={user?.photoURL}
-            alt="Shoes"
+            alt="Profile"
             className="rounded-full w-32 h-32"
           />
         </figure>
@@ -45,7 +45,7 @@ const Profile = () => {
           <p>
             <span className="font-bold">Email:</span> {user?.email}
           </p>
-          <p>
+          <p className="break-words">
             <span className="font-bold">PhotoURL:</span>{" "}
             <Link to={user?.photoURL} target="_blank">
               {user?.photoURL}

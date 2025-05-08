@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import React, { useState } from "react";
 import auth from "../Firebase/Firebase.init";
 import { Link, Navigate, useNavigate } from "react-router";
@@ -74,6 +74,22 @@ const Resister = () => {
     // console.log(name, photoURL, email, password);
     resisterUser(email, password, name, photoURL);
   };
+  const handleGoogleLogin = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        swal("Success!", `Welcome ${user.displayName}!`, "success").then(() => {
+          navigate("/myProfile");
+          window.location.reload();
+        });
+      })
+      .catch((error) => {
+        console.error("Error during Google login:", error);
+        swal("Error!", "Google login failed. Please try again.", "error");
+      });
+  };
+
   return (
     <div className="hero py-24">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -121,8 +137,11 @@ const Resister = () => {
               Resister
             </button>
 
-            <button className="btn mt-3 bg-amber-100">
-              {" "}
+            <button
+              className="btn mt-3 bg-amber-100"
+              type="button"
+              onClick={handleGoogleLogin}
+            >
               <FaGoogle />
               Login with Google
             </button>

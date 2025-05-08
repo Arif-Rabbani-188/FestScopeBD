@@ -31,7 +31,12 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // console.error(errorCode, errorMessage);
-        alert(errorMessage);
+        swal("Invalid email or password", {
+          icon: "error",
+        }).then(() => {
+          window.location.reload();
+        }
+        );
       });
   };
 

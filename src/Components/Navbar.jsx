@@ -83,9 +83,9 @@ const Navbar = () => {
                   Logout
                 </button>
               ) : (
-                <Link to="/myProfile" onClick={() => document.activeElement.blur()}>
+                <NavLink to="/myProfile" onClick={() => setUser(null)}>
                   Login
-                </Link>
+                </NavLink>
               )}
             </li>
           </ul>
@@ -119,7 +119,7 @@ const Navbar = () => {
           {user ? (
             <button onClick={handleLogout}>Logout</button>
           ) : (
-            <Link to="/myProfile">Login</Link>
+            <NavLink to="/myProfile" onClick={() => setUser(null)}>Login</NavLink>
           )}
         </h1>
       </div>

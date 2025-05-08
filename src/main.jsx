@@ -12,6 +12,7 @@ import Details from "./Components/Details/Details.jsx";
 import Resister from "./Pages/Resister.jsx";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute.jsx";
 import Error from "./Components/Error.jsx";
+import Terms from "./Pages/Terms.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <Error></Error>
+      },
+      {
+        path: '/terms',
+        element: <Terms></Terms>
       }
     ],
   },

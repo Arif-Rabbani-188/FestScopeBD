@@ -51,17 +51,40 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <NavLink to="/home">Home</NavLink>
+              <NavLink to="/home" onClick={() => document.activeElement.blur()}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/myProfile">My Profile</NavLink>
+              <NavLink
+                to="/myProfile"
+                onClick={() => document.activeElement.blur()}
+              >
+                My Profile
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/about">About</NavLink>
+              <NavLink
+                to="/about"
+                onClick={() => document.activeElement.blur()}
+              >
+                About
+              </NavLink>
+            </li>
+            <li>
+              {user ? (
+                <button onClick={() => { handleLogout(); document.activeElement.blur(); }}>
+                  Logout
+                </button>
+              ) : (
+                <Link to="/myProfile" onClick={() => document.activeElement.blur()}>
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">FestScope BD</a>
+        <a className="btn btn-ghost text-lg md:text-4xl">FestScope BD</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -78,13 +101,15 @@ const Navbar = () => {
       </div>
       <div className="navbar-end flex items-center gap-5">
         {user && (
-          <div className="avatar avatar-placeholder">
-            <div className="bg-neutral text-neutral-content w-12 rounded-full">
-              <img src={user?.photoURL} alt="" />
+          <Link to="/myProfile">
+            <div className="avatar avatar-placeholder">
+              <div className="bg-neutral text-neutral-content w-12 rounded-full">
+                <img src={user?.photoURL} alt="" />
+              </div>
             </div>
-          </div>
+          </Link>
         )}
-        <h1 to="/login" className="btn bg-[#007bff] text-white">
+        <h1 to="/login" className="btn bg-[#007bff] text-white hidden md:flex">
           {user ? (
             <button onClick={handleLogout}>Logout</button>
           ) : (

@@ -63,6 +63,19 @@ const Profile = () => {
             </button>
             <Link to='/home' className="btn btn-primary">Back To Home</Link>
           </form>
+          <button
+            className="btn btn-primary mt-4"
+            onClick={() => {
+              auth.signOut().then(() => {
+                alert("Logged out successfully");
+                window.location.reload();
+              }).catch((error) => {
+                console.error("Logout error:", error);
+              });
+            }}
+          >
+            Logout
+          </button>
         </div>
       </div>
     </div>

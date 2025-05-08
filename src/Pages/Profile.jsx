@@ -47,8 +47,8 @@ const Profile = () => {
           </p>
           <p className="break-words">
             <span className="font-bold">PhotoURL:</span>{" "}
-            <Link to={user?.photoURL} target="_blank">
-              {user?.photoURL}
+            <Link className="text-blue-500 underline" to={user?.photoURL} target="_blank">
+              PhotoURL
             </Link>
           </p>
           <form onSubmit={handleSubmit} className="fieldset">

@@ -119,7 +119,7 @@ const Navbar = () => {
           {user ? (
             <button onClick={handleLogout}>Logout</button>
           ) : (
-            <button onClick={() => setUser(null)}>Login</button>
+            <NavLink to="/myProfile" onClick={() => setUser(null)}>Login</NavLink>
           )}
         </h1>
       </div>

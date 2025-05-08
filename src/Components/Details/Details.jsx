@@ -24,7 +24,9 @@ const Details = () => {
   const notify = (e) => {
     e.preventDefault();
     import("sweetalert").then((swal) => {
-      swal.default(`You have reserved a seat for ${event?.name}`);
+      swal.default(`You have reserved a seat for ${event?.name}`).then(() => {
+      window.location.href = "/";
+      });
     });
   }
 

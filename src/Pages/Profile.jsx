@@ -3,6 +3,7 @@ import { Authconext } from "../Provider/AuthProvider";
 import { Link } from "react-router";
 import { updateProfile } from "firebase/auth";
 import auth from "../Firebase/Firebase.init";
+import swal from 'sweetalert';
 
 const Profile = () => {
   const handleSubmit = (e) => {
@@ -20,8 +21,11 @@ const Profile = () => {
       photoURL: photoURL,
     })
       .then(() => {
-        alert("Profile updated successfully");
-        window.location.reload();
+        swal("Profile updated successfully", {
+          icon: "success",
+        }).then(() => {
+          window.location.reload();
+        });
       })
       .catch((error) => {
         
@@ -67,8 +71,11 @@ const Profile = () => {
             className="btn btn-primary mt-4"
             onClick={() => {
               auth.signOut().then(() => {
-                alert("Logged out successfully");
-                window.location.reload();
+                swal("Logout successfully", {
+                  icon: "success",
+                }).then(() => {
+                  window.location.reload();
+                });
               }).catch((error) => {
                 console.error("Logout error:", error);
               });

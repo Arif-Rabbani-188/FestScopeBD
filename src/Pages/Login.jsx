@@ -9,6 +9,7 @@ import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import auth from "../Firebase/Firebase.init";
 import { Authconext } from "../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router";
+import swal from 'sweetalert';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,7 +20,12 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         // console.log(user);
-        navigate(`${location.state ? location.state : "/"}`);
+        swal("Login successfully", {
+          icon: "success",
+        }).then(() => {
+          navigate(`${location.state ? location.state : "/"}`);
+        }
+        );
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -40,7 +46,11 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        navigate(`${location.state ? location.state : "/"}`);
+        swal("Login successfully", {
+          icon: "success",
+        }).then(() => {
+          navigate(`${location.state ? location.state : "/"}`);
+        });
       })
       .catch((error) => {
         // console.error("Error signing in with Google: ", error);

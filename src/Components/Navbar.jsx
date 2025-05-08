@@ -4,6 +4,7 @@ import "./Nav.css";
 import { Authconext } from "../Provider/AuthProvider";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import auth from "../Firebase/Firebase.init";
+import swal from 'sweetalert';
 
 const Navbar = () => {
   const { user, setUser } = useContext(Authconext);
@@ -19,6 +20,11 @@ const Navbar = () => {
     signOut(auth)
       .then(() => {
         setUser(null);
+        swal("Logout successfully", {
+          icon: "success",
+        }).then(() => {
+          
+        });
       })
       .catch((error) => {
         // console.error("Error signing out: ", error);

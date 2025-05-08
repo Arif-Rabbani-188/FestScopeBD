@@ -3,7 +3,7 @@ import { Authconext } from "../Provider/AuthProvider";
 import { Link } from "react-router";
 import { updateProfile } from "firebase/auth";
 import auth from "../Firebase/Firebase.init";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 const Profile = () => {
   const handleSubmit = (e) => {
@@ -27,9 +27,7 @@ const Profile = () => {
           window.location.reload();
         });
       })
-      .catch((error) => {
-        
-      });
+      .catch((error) => {});
   };
   const { user } = use(Authconext);
   return (
@@ -46,6 +44,12 @@ const Profile = () => {
           <h2 className="card-title">{user?.displayName}</h2>
           <p>
             <span className="font-bold">Email:</span> {user?.email}
+          </p>
+          <p>
+            <span className="font-bold">PhotoURL:</span>{" "}
+            <Link to={user?.photoURL} target="_blank">
+              {user?.photoURL}
+            </Link>
           </p>
           <form onSubmit={handleSubmit} className="fieldset">
             <label className="label">Name</label>
@@ -65,20 +69,25 @@ const Profile = () => {
             <button className="btn btn-primary mt-4" type="submit">
               Update Profile
             </button>
-            <Link to='/home' className="btn btn-primary">Back To Home</Link>
+            <Link to="/home" className="btn btn-primary">
+              Back To Home
+            </Link>
           </form>
           <button
             className="btn btn-primary mt-4"
             onClick={() => {
-              auth.signOut().then(() => {
-                swal("Logout successfully", {
-                  icon: "success",
-                }).then(() => {
-                  window.location.reload();
+              auth
+                .signOut()
+                .then(() => {
+                  swal("Logout successfully", {
+                    icon: "success",
+                  }).then(() => {
+                    window.location.reload();
+                  });
+                })
+                .catch((error) => {
+                  console.error("Logout error:", error);
                 });
-              }).catch((error) => {
-                console.error("Logout error:", error);
-              });
             }}
           >
             Logout

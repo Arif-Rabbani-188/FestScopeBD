@@ -4,6 +4,8 @@ import auth from "../Firebase/Firebase.init";
 import { Link, Navigate, useNavigate } from "react-router";
 import { updateProfile } from "firebase/auth";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
+import swal from 'sweetalert';
+
 
 const Resister = () => {
   const navigate = useNavigate();
@@ -20,8 +22,11 @@ const Resister = () => {
           photoURL: photoURL,
         })
           .then(() => {
-            navigate("/myProfile");
-            console.log("Profile updated successfully");
+            swal("Success!", "Your profile has been updated!", "success").then(() => {
+              navigate("/myProfile");
+              window.location.reload();
+            });
+
           })
           .catch((error) => {
             console.error("Error updating profile:", error);

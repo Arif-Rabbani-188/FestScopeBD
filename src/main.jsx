@@ -11,7 +11,7 @@ import Login from "./Pages/Login.jsx";
 import Details from "./Components/Details/Details.jsx";
 import Resister from "./Pages/Resister.jsx";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute.jsx";
-
+import Error from "./Components/Error.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,15 +26,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/home/:id",
-        element: <PrivateRoute>
-          <Details></Details>
-        </PrivateRoute>,
-    
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myProfile",
         element: <MyProfile></MyProfile>,
-     
       },
       {
         path: "/login",
@@ -44,8 +44,12 @@ const router = createBrowserRouter([
         path: "/resister",
         element: <Resister></Resister>,
       },
+      {
+        path: '*',
+        element: <Error></Error>
+      }
     ],
-  }
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(

@@ -56,6 +56,9 @@ const Navbar = () => {
             <li>
               <NavLink to="/myProfile">My Profile</NavLink>
             </li>
+            <li>
+              <NavLink to="/about">About</NavLink>
+            </li>
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">FestScope BD</a>
@@ -67,6 +70,9 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink to="/myProfile">My Profile</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">About</NavLink>
           </li>
         </ul>
       </div>

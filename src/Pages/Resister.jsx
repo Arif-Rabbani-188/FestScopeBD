@@ -51,17 +51,23 @@ const Resister = () => {
     const isValidLength = password.length >= 6;
 
     if (!hasUppercase) {
-      alert("Password must have at least one uppercase letter.");
+      swal("Password must have at least one uppercase letter.", {
+        icon: "warning",
+      });
       return;
     }
 
     if (!hasLowercase) {
-      alert("Password must have at least one lowercase letter.");
+      swal("Password must have at least one lowercase letter.", {
+        icon: "warning",
+      });
       return;
     }
 
     if (!isValidLength) {
-      alert("Password must be at least 6 characters long.");
+      swal("Password must be at least 6 characters long.", {
+        icon: "warning",
+      });
       return;
     }
 

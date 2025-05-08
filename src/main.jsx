@@ -13,6 +13,7 @@ import Resister from "./Pages/Resister.jsx";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute.jsx";
 import Error from "./Components/Error.jsx";
 import Terms from "./Pages/Terms.jsx";
+import Forget from "./Pages/Forget.jsx";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: '/terms',
         element: <Terms></Terms>
+      },
+      {
+        path: '/forget',
+        element: <Forget></Forget>
       }
     ],
   },

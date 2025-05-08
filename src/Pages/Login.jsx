@@ -90,7 +90,7 @@ const Login = () => {
               <div className="absolute right-14 text-lg" onClick={togglePasswordVisibility}>{showPassword ? <FaEyeSlash /> : <FaEye />  }</div>
             </div>
             <div>
-              <a className="link link-hover">Forgot password?</a>
+              <Link to="/forget" className="link link-hover">Forgot password?</Link>
             </div>
             <button className="btn btn-neutral mt-4" type="submit">
               Login

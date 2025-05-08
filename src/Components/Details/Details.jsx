@@ -23,7 +23,9 @@ const Details = () => {
 
   const notify = (e) => {
     e.preventDefault();
-    toast(`You have reserved a seat for ${event?.name}`);
+    import("sweetalert").then((swal) => {
+      swal.default(`You have reserved a seat for ${event?.name}`);
+    });
   }
 
   return (

@@ -1,12 +1,16 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import auth from "../Firebase/Firebase.init";
 import { Link, Navigate, useNavigate } from "react-router";
 import { updateProfile } from "firebase/auth";
-import { FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 
 const Resister = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   const resisterUser = (email, password, name, photoURL) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -87,18 +91,30 @@ const Resister = () => {
               placeholder="Email"
             />
             <label className="label">Password</label>
-            <input
-              type="password"
-              name="password"
-              className="input"
-              placeholder="Password"
-            />
+            <div className="flex items-center">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                className="input"
+                placeholder="Password"
+              />
+              <div
+                className="absolute right-14 text-lg"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
+            </div>
             <div></div>
             <button className="btn btn-neutral mt-4" type="submit">
               Resister
             </button>
 
-            <button className="btn mt-3 bg-amber-100"> <FaGoogle />Login with Google</button>
+            <button className="btn mt-3 bg-amber-100">
+              {" "}
+              <FaGoogle />
+              Login with Google
+            </button>
             <h1 className="text-center mt-5">
               Already have an account?{" "}
               <Link to="/login" className="underline text-blue-500">
